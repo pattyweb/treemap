@@ -1,0 +1,17 @@
+.heatmap td {
+    text-align: center;
+    vertical-align: middle;
+}
+.rank { background-color: lightblue; }
+.points { background-color: lightgreen; }
+.country { background-color: lightcoral; }
+
+#loading {
+    margin-top: 20px;
+}
+
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+    border-width: .3em;
+}

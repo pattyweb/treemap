@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tennis Rankings</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Tennis Rankings</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Ranking <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="treemap.html">Treemap</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <style>
+        .treemap-container {
+            display: flex;
+            height: 80vh;
+        }
+        .column {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            margin: 5px;
+        }
+        .title {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            background: #ddd;
+            padding: 5px 0;
+        }
+        .node {
+            position: relative;
+            margin: 5px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: transform 0.2s, background-color 0.2s;
+            cursor: pointer;
+        }
+        .node.most:hover {
+            transform: scale(1.05);
+            z-index: 10;
+            background-color: #ff9900;
+        }
+        .node.least:hover {
+            transform: scale(1.05);
+            z-index: 10;
+            background-color: #1f77b4;
+        }
+        .most {
+            background-color: #ff7f0e;
+        }
+        .least {
+            background-color: #1f77b4;
+        }
+        /* Info box styling */
+        .info-box {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #333;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 12px;
+            white-space: nowrap;
+            z-index: 20; /* Ensure it appears above other elements */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .node:hover .info-box {
+            display: block;
+        }
+
+        /* Specific styles for most players columns */
+        #most-players-first .node {
+            flex-grow: 6;
+        }
+        #most-players-second-third .node.second {
+            flex-grow: 5; /* Bigger */
+        }
+        #most-players-second-third .node.third {
+            flex-grow: 4; /* Slightly smaller */
+        }
+        #most-players-fourth-fifth-sixth .node.fourth {
+            flex-grow: 3; /* Bigger than fifth and sixth */
+        }
+        #most-players-fourth-fifth-sixth .node.fifth {
+            flex-grow: 2.5; /* Slightly smaller than fourth */
+        }
+        #most-players-fourth-fifth-sixth .node.sixth {
+            flex-grow: 2; /* Smallest */
+        }
+        /* Specific styles for least players columns */
+        #least-players .node {
+            flex-grow: 0.5;
+        }
+        #least-players .node.first {
+            flex-grow: 0.5; /* Biggest */
+        }
+        #least-players .node.second {
+            flex-grow: 0.5; /* Slightly smaller */
+        }
+        #least-players .node.third {
+            flex-grow: 0.5; /* Smaller */
+        }
+        #least-players .node.fourth {
+            flex-grow: 0.5; /* Smaller */
+        }
+        #least-players .node.fifth {
+            flex-grow: 0.5; /* Smaller */
+        }
+        #least-players .node.sixth {
+            flex-grow: 0.5; /* Smallest */
+        }
+    </style>
+</head>
+<body>
+    <div class="container treemap-container mt-5">
+        <div class="column" id="most-players-first">
+            <div class="title">Country with most players</div>
+            <div class="node most first">
+                Loading...
+                <div class="info-box">Top Player: <span class="top-player">N/A</span></div>
+            </div>
+        </div>
+        <div class="column" id="most-players-second-third">
+            <div class="node most second">
+                Loading...
+                <div class="info-box">Top Player: <span class="top-player">N/A</span></div>
+            </div>
+            <div class="node most third">
+                Loading...
+                <div class="info-box">Top Player: <span class="top-player">N/A</span></div>
+            </div>
+        </div>
+        <div class="column" id="most-players-fourth-fifth-sixth">
+            <div class="node most fourth">
+                Loading...
+                <div class="info-box">Top Player: <span class="top-player">N/A</span></div>
+            </div>
+            <div class="node most fifth">
+                Loading...
+                <div class="info-box">Top Player: <span class="top-player">N/A</span></div>
+            </div>
+            <div class="node most sixth">
+                Loading...
+                <div class="info-box">Top Player: <span class="top-player">N/A</span></div>
+            </div>
+        </div>
+        <div class="column" id="least-players">
+            <div class="title">Countries with least players</div>
+            <div class="node least first">
+                Loading...
+                <div class="info-box">Number of Players: <span class="player-count">N/A</span></div>
+            </div>
+            <div class="node least second">
+                Loading...
+                <div class="info-box">Number of Players: <span class="player-count">N/A</span></div>
+            </div>
+            <div class="node least third">
+                Loading...
+                <div class="info-box">Number of Players: <span class="player-count">N/A</span></div>
+            </div>
+            <div class="node least fourth">
+                Loading...
+                <div class="info-box">Number of Players: <span class="player-count">N/A</span></div>
+            </div>
+            <div class="node least fifth">
+                Loading...
+                <div class="info-box">Number of Players: <span class="player-count">N/A</span></div>
+            </div>
+            <div class="node least sixth">
+                Loading...
+                <div class="info-box">Number of Players: <span class="player-count">N/A</span></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/treemap.js"></script>
+</body>
+</html>
