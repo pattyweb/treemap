@@ -1,4 +1,4 @@
-# Tennis Rankings Heatmap
+# Tennis Rankings Treemap
 
 This project visualizes tennis player ranking and a treemap to see top 6 countries with most players present in the ATP ranking and the top 6 countries with least players. It fetches real-time data from the Sportradar API and displays the rankings, player names, points, and country codes.
 
